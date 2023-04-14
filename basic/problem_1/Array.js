@@ -80,12 +80,25 @@
 {
   let input_data = "오늘 날씨는 매우 맑음";
   let output_data = input_data.split(" ");
-  // 3번째 인덱스 요소를 변경하는 메소드 사용하기
+  // 1. 배열의 인덱스를 이용해서 변경하는 방법
+  // output_data[3] = "흐림";
+
+  // 2. splice() 메소드 사용하는 방법
+  output_data.splice(3, 1, "흐림");
   console.log(output_data); // ["오늘", "날씨는", "매우", "흐림"]
 }
 
-// {
-//   // '=' 금지
-//   let input_data = "오늘 날씨는 매우 맑음";
-//   console.log(output_data); // ["내일", "날씨는", "매우", "맑음]
-// }
+{
+  // '=' 금지
+  let input_data = "오늘 날씨는 매우 맑음";
+  let output_data = input_data.split(" ");
+  // console.log(output_data);
+  /* 
+  *주의* 
+  .splice(0, 0, "내일"); 의 결과는 [ '내일', '오늘', '날씨는', '매우', '맑음' ]
+  splice(배열의 변경을 시작할 index, 배열에서 제거할 요소의 수, 배열에 추가할 요소)
+  <배열에서 제거할 요소의 수는 배열의 변경을 시작할 인덱스부터 제거할 요소의 수를 의미함>
+  */
+  output_data.splice(0, 1, "내일");
+  console.log(output_data); // ["내일", "날씨는", "매우", "맑음]
+}
