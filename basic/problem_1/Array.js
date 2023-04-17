@@ -8,12 +8,12 @@
 //   //   output = 웹페이지
 // }
 
-// {
-//   let input_data = ["웹페", "이지", "단순", "한보", "조기"];
-//   let output_data = input_data.slice(2, 4);
+{
+  let input_data = ["웹페", "이지", "단순", "한보", "조기"];
+  let output_data = input_data.slice(2, 4);
 
-//   console.log(output_data); // ["단순", "한보"]
-// }
+  console.log(output_data); // ["단순", "한보"]
+}
 
 // {
 //   let input_data = [1, 2, 3, 4, 5];

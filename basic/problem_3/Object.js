@@ -1,7 +1,7 @@
 const webtoons = [
   {
     id: 1,
-    title: "신의탑",
+    name: "웹페",
     genre: "판타지",
     contribute: {
       writer: "SIU",
