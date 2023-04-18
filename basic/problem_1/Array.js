@@ -8,12 +8,12 @@
 //   //   output = 웹페이지
 // }
 
-{
-  let input_data = ["웹페", "이지", "단순", "한보", "조기"];
-  let output_data = input_data.slice(2, 4);
+// {
+//   let input_data = ["웹페", "이지", "단순", "한보", "조기"];
+//   let output_data = input_data.slice(2, 4);
 
-  console.log(output_data); // ["단순", "한보"]
-}
+//   console.log(output_data); // ["단순", "한보"]
+// }
 
 // {
 //   let input_data = [1, 2, 3, 4, 5];
@@ -42,7 +42,7 @@
 //   input_data.forEach((value, index, arr) => {
 //     arr[index] = value * 3;
 //   });
-//   console.log(input_data); // [30, 60, 90, 120, 150]
+//   console.log(input_data); // [5, 10, 15, 20, 25]
 // }
 
 // {
@@ -65,11 +65,11 @@
 //   console.log(output_data); // [30, 40]
 // }
 
-// {
-//   let input_data = [10, 20, 30, 40, 50];
-//   input_data.splice(2, 2);
-//   console.log(input_data); // [10, 20, 50]
-// }
+{
+  let input_data = [10, 20, 30, 40, 50];
+  input_data.splice(2, 2);
+  console.log(input_data); // [10, 20, 50]
+}
 
 // {
 //   let input_data = [10, 20, 30, 40, 50];

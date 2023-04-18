@@ -42,6 +42,18 @@ let obj1 = [
 //   객체 찾기
 //   3번째 단순만 Key, value를 둘 다 출력하시오
 // }
+// for (let i = 0; i < obj1.length; i++) {
+//   if (obj1[i].name === "단순") {
+//     // console.log(obj1[i]);
+//     for (let key in obj1[i]) {
+//       console.log(obj1[i]);
+//       if (key !== "id") {
+//         // console.log(obj1[i]);
+//         console.log(key, obj1[i][key]);
+//       }
+//     }
+//   }
+// }
 
 // {
 //   const array = [1,2,3,4,5]

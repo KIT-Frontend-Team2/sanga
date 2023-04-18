@@ -37,6 +37,8 @@ const users = [
 ]
 */
 
+const result = users.push({ id: 5, name: "이지형", age: 19, height: 200 });
+console.log(users);
 // 2번 문제
 // 객체의 데이터를 통해 해당 값만 출력하기
 // [ { id: 4, name: '배상아', age: 23, height: 168 } ]
