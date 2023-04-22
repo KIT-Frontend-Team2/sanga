@@ -57,15 +57,21 @@ console.log(users);
 
 // 문제2
 
+const del_1 = users.find((item) => item.name === "배상아");
+const del_2 = users.indexOf(del_1);
+users.splice(del_2, 1);
+console.log(users);
+
 // 문제3
 users.map((el) => {
-  if (el.id === 3) {
-    el.age = 30;
+  if (el.name === "이수박") {
+    el.name = "이포도";
   }
 });
 console.log(users);
 
 // 문제4
+console.log(users);
 
 // 문제5
 const result = users.sort((a, b) => a.height - b.height);

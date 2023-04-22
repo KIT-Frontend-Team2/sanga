@@ -347,5 +347,157 @@ console.log(arr22 === copy); // false
 
 /* 
 (10) Array.prototype.join
-- 
+- 원본 배열의 모든 요소를 문자열로 변환한 후, 인수로 전달받은 문자열, 즉 구분자로 연결한 문자열을 반환함 
+- 구분자 생략 가능, 기본 구분자는 콤마
 */
+
+const arr23 = [1, 2, 3, 4, "바람", "비"];
+console.log(arr23.join()); // 예상 결과 : 1,2,3,4,바람,비
+console.log(arr23.join("")); // 예상 결과 : 1234바람비
+console.log(arr23.join("-")); // 예상 결과 : 1-2-3-4-바람-비
+console.log(arr23.join(":")); // 예상 결과 : 1:2:3:4:바람:비
+
+/* 
+(11) Array.prototype.reverse
+- 원본 배열의 순서를 반대로 뒤집음 
+- 원본 배열 변경됨 
+- 반환값은 변경된 배열
+*/
+
+const arr24 = [1, 2, 3];
+const result13 = arr24.reverse();
+console.log(result13); // 예상 결과 : [3,2,1]
+console.log(arr24); // 예상 결과 : [3,2,1]
+
+/* 
+(12) Array.prototype.fill
+- 인수로 전달받은 값을 배열의 처음부터 끝까지 요소로 채움 
+- 원본 배열 변경됨 
+
+*구문 
+fill(value, start, end)
+value : 배열을 채울 값 
+start : value 값을 채울 배열의 시작 index 
+end : value 값을 채울 배열의 종료 index (end index는 미포함)
+*/
+
+const arr25 = [1, 2, 3, 4, 5];
+// 인수로 전달받은 값 0을 배열의 처음부터 끝까지 요소로 채움
+arr25.fill(9);
+console.log(arr25); // 예상 결과 : [9, 9, 9, 9, 9]
+
+const arr26 = [1, 2, 3];
+arr26.fill(1, 2, 3);
+console.log(arr26); // 예상 결과 :[1, 2, 1]
+
+/* 
+ex) 같은 숫자가 아닌 1부터 45까지 모든 숫자 출력
+array(45)
+  .fill()
+  .map((v, (i) => i + 1));
+fill 메서드로 작성할 경우에 undefined로 배열이 채워지는데 map을 통해서 v라는 인덱스는 0부터 시작해서 i+1을 리턴하면 숫자를 1부터 시작할 수 있음 (i으로 리턴하면 0부터 44로 채워짐)
+*/
+
+/* 
+(13) Array.prototype.includes
+- 배열 내에 특정 요소가 포함되어 있는지 확인하여 true 또는 false를 반환
+*/
+
+const arr27 = [1, 2, 3, 4, 5, 6, 7];
+console.log(arr27.includes(4)); // 예상 결과 : true
+
+/* 
+array 에서 find()와 includes() 비교 
+
+array.find() 
+주어진 함수를 만족하는 첫번째 요소의 값 반환 
+그런 요소가 없다면 undefined 반환 
+찾은 요소의 값 대신 인덱스를 반환하는 것은 findIndex() 
+*/
+
+const arr28 = [5, 30, 20, 44, 3, 130];
+const result14 = arr28.find((el) => el > 20); // 예상 결과 : 30
+const result15 = arr28.findIndex((el) => el > 20); // 예상 결과 : 1
+const result16 = arr28.filter((el) => el > 20); // 예상 결과 : [30, 44, 130]
+
+console.log(result14);
+console.log(result15);
+console.log(result16);
+
+/* 
+(14) Array.prototype.flat
+- 인수로 전달한 깊이만큼 재귀적으로 배열을 평탄화함 
+- 기본값 : 1 (즉, flat(1) === flat())
+*/
+
+console.log([1, [2, 3, 4, 5]].flat()); // 예상 결과 : [1, 2, 3, 4, 5]
+
+/****** 배열 고차 함수  ******/
+/* 
+고차 함수는 함수를 인수로 전달받거나 함수를 반환하는 함수 
+*/
+
+/*
+(1) Array.prototype.sort
+- 배열의 요소를 정렬 
+- 원본 배열을 직접 변경하여 정렬된 배열을 반환
+*/
+
+const fruits = ["Banana", "Orange", "Apple"];
+
+// 오름차순 정렬
+fruits.sort();
+console.log(fruits); // [ 'Apple', 'Banana', 'Orange' ]
+
+// 내림차순 정렬
+fruits.reverse();
+console.log(fruits); // [ 'Orange', 'Banana', 'Apple' ]
+
+/*
+근데 주의할 점은 
+숫자 요소들로만 이루어진 배열은 유니코드 코드 포인트의 순서를 따르기 때문에,
+sort 메서드에 정렬 순서를 정의하는 비교 함수를 인수로 전달해야한다!! 
+*/
+
+const points = [40, 20, 30, 11, 304, 98, 3];
+// 숫자 배열의 오름차순 정렬 (비교 함수의 반환값이 0보다 작으면 a를 우선하여 정렬)
+points.sort((a, b) => a - b);
+console.log(points); // [3, 11, 20, 30, 40, 98, 304]
+
+// 숫자 배열의 내림차순 정렬 (비교 함수의 반환값이 0보다 작으면 b를 우선하여 정렬)
+points.sort((a, b) => b - a);
+console.log(points); // [304, 98, 40, 30, 20, 11, 3]
+
+/*
+(2) Array.prototype.forEach
+- for 문을 대체할 수 있는 고차 함수 
+- 자신의 내부에서 반복문을 실행함 
+- 반복문을 추상화한 고차 함수로서 내부에서 반복문을 통해 자신을 호출한 배열을 순회하면서 수행해야 할 처리를 콜백 함수로 전달받아 반복 호출함 
+*/
+
+// arr는 원본 배열을 가리킴
+[1, 2, 3].forEach((item, index, arr) => {
+  console.log(`요소값: ${item}, 인덱스: ${index}, this: ${arr}`);
+});
+
+/*
+(3) Array.prototype.map
+- 자신을 호출한 배열의 모든 요소를 순회하면서 인수로 전달받은 콜백 함수를 반복 호출함
+- 콜백 함수의 반환값들로 구성된 새로운 배열을 반환함 
+- 원본 배열은 변경되지않음 
+
+<<forEach 메서드와 map 메서드의 공통점>>
+자신을 호출한 배열의 모든 요소를 순회하면서 인수로 전달받은 콜백 함수를 반복 호출한다는 것 
+
+<<forEach 메서드와 map 메서드의 차이점>>
+forEach 메서드 : 언제나 undefined 반환 
+map 메서드 : 콜백함수의 반환값들로 구성된 새로운 배열을 반환
+=> forEach 메서드 : 단순히 반복문을 대체하기 위한 고차함수이고, 
+map 메서드 : 요소값을 다른 값으로 매핑한 새로운 배열을 생성하기 위한 고차함수
+*/
+
+// arr는 원본 배열을 가리킴
+[1, 2, 3].map((item, index, arr) => {
+  console.log(`요소값: ${item}, 인덱스: ${index}, this: ${arr}`);
+  return item;
+});
