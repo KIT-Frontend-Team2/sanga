@@ -152,10 +152,10 @@ webtoons.map((el) => {
 // console.log(change_list);
 
 // 문제 6. 혼자서 작업하고 있는 즉, writer와 illustrator 같은 webtoon들의 정보만 보여주세요
-let search_list = webtoons.contribute.filter(
-  (el) => el.writer === el.illustrator
-);
-console.log(search_list);
+// let search_list = webtoons.contribute.filter(
+//   (el) => el.writer === el.illustrator
+// );
+// console.log(search_list);
 
 // 문제 7. 작가중에 이상하게 이름(=이지형)이 올라가있는 사람을 지워주고 자연스럽게 수정해주세요 해당 작품만 보여주세요
 // let change_list = webtoons[3].contribute.writer[1];
@@ -176,11 +176,11 @@ console.log(search_list);
 //   return el;
 // });
 // console.log(change_list);
-// const new_list = webtoons.map((item) => {
-//   if (item.contribute.writer.includes("이지형")) {
-//     const arr = item.contribute.writer.filter((name) => name !== "이지형");
-//     item.contribute.writer = arr[0];
-//   }
-//   return item;
-// });
-// console.log(new_list);
+const new_list = webtoons.map((item) => {
+  if (item.contribute.writer.includes("이지형")) {
+    const arr = item.contribute.writer.filter((name) => name !== "이지형");
+    item.contribute.writer = arr[0];
+  }
+  return item;
+});
+console.log(new_list);

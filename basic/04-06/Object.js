@@ -41,7 +41,16 @@ const movies = [
     프로듀서: ["오카무라 와카나(岡村和佳菜)", "이토 키누에(伊藤絹恵)"],
     제작사: "코믹스 웨이브 필름",
     개봉년도: 2019,
-    장르: ["애니메이션", "로맨스", "판타지", "드라마", "재난", "세카이계", "어드벤처", "성장"],
+    장르: [
+      "애니메이션",
+      "로맨스",
+      "판타지",
+      "드라마",
+      "재난",
+      "세카이계",
+      "어드벤처",
+      "성장",
+    ],
   },
   {
     id: 005,
@@ -49,34 +58,47 @@ const movies = [
     이미지:
       "https://i.namu.wiki/i/A5GZJAw4w9BuXUYcd1pP7KK1fM1uFhk3tPvhnikGymz6z4wA1dcuz6iVdv0EML8tUQipB0bS5k6hBsY8BFxDioPqynAXe3sctFAiSFAe1d1D9cXVfkhuzSCvcYWxtr91G54S9GWYXz9aIIYMkZR3vA.webp",
     감독: "신카이 마코토",
-    프로듀서: ["오카무라 와카나(岡村和佳菜)", "이토 키누에(伊藤絹恵)", "이토 코이치로(伊藤耕一郎)"],
+    프로듀서: [
+      "오카무라 와카나(岡村和佳菜)",
+      "이토 키누에(伊藤絹恵)",
+      "이토 코이치로(伊藤耕一郎)",
+    ],
     제작사: "코믹스 웨이브 필름",
     개봉년도: 2022,
-    장르: ["액션", "어드벤처", "재난", "판타지", "로맨스", "드라마", "포스트 아포칼립스"],
+    장르: [
+      "액션",
+      "어드벤처",
+      "재난",
+      "판타지",
+      "로맨스",
+      "드라마",
+      "포스트 아포칼립스",
+    ],
   },
 ];
 
-{
-  // 1. 장르가 어드벤쳐인 영화의 제목만 보여주세요.
-  const movies.foreach(장르 === 어드벤처){
-    console.log(movies.id)
-  }
-}
+// {
+//   // 1. 장르가 어드벤쳐인 영화의 제목만 보여주세요.
+//   const movies.foreach(장르 === 어드벤처){
+//     movies.title
+//     console.log(movies.id)
+//   }
+// }
 {
   // 2. 신카이 마코토 감독이 만든 영화들의 장르를 보여주세요.
   const input_data = movies;
-  const ouput_data = input_data;
+  const ouput_data = input_data.filter((el) => el.감독 === "신카이 마코토");
   console.log(ouput_data);
 }
-{
-  // 3. 개봉년도가 3번째인 영화의 정보를 모두 출력해주세요
-  const input_data = movies;
-  const ouput_data = input_data;
-  console.log(ouput_data);
-}
-{
-  // 4. 스튜디오 지브리에서 만든 영화들의 정보만 출력하는데 제작사를 코믹스 웨이브 필름으로 바꿔서 출력해주세요
-  const input_data = movies;
-  const ouput_data = input_data;
-  console.log(ouput_data);
-}
+// {
+//   // 3. 개봉년도가 3번째인 영화의 정보를 모두 출력해주세요
+//   const input_data = movies;
+//   const ouput_data = input_data;
+//   console.log(ouput_data);
+// }
+// {
+//   // 4. 스튜디오 지브리에서 만든 영화들의 정보만 출력하는데 제작사를 코믹스 웨이브 필름으로 바꿔서 출력해주세요
+//   const input_data = movies;
+//   const ouput_data = input_data;
+//   console.log(ouput_data);
+// }

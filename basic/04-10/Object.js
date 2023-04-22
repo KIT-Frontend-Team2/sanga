@@ -134,16 +134,46 @@ const students = [
 // 모든 문제들은 스프레드 연산자를 사용하는 것을 권장합니다.
 
 // 1. 2반의 학생들의 정보를 모두 보여주세요
+// const info = students.filter((el) => el.class === 2);
+// console.log(...info);
 
 // 2. grade가 2등급 이상인 학생들을 모두 보여주세요
+// const info_1 = students.filter((el) => el.grade >= 2);
+// console.log(...info_1);
 
 // 3. 이영수의 이름을 국영수로 변경해주고 바뀐 학생의 정보만 보여주세요
+// const info_2 = students.filter((el) => {
+//   if (el.name === "이영수") {
+//     el.name = "국영수";
+//     return el;
+//   }
+// });
+// console.log(info_2);
 
 // 4. 홍길동의 이름을 장보고로 변경해주고 모두 보여주세요
+// const info_3 = students.map((el) => {
+//   if (el.name === "홍길동") {
+//     el.name = "장보고";
+//   }
+//   return el;
+// });
+// console.log(info_3);
 
 // 5. 영어 점수가 80점 이상인 학생들만 보여주세요
+// const info_4 = students.filter((el) => {
+//   if (el.scores.english >= 80) {
+//     return el;
+//   }
+// });
+// console.log(info_4);
 
 // 6. 나이가 17살 이하인 학생들만 보여주세요
+// const info_5 = students.filter((el) => {
+//   if (el.age <= 17) {
+//     return el;
+//   }
+// });
+// console.log(info_5);
 
 // 심화 문제
 
