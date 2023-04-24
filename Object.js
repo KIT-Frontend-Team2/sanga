@@ -150,6 +150,11 @@ const result2 = students.filter((item) => item.gender === "male");
 console.log(result2);
 
 // 4. 각 학생들을 "제 이름은 @@@ 이고 나이는 @@ 입니다." 형식에 맞게 출력해주세요
+const result3 = students.map((el) => {
+  const message = `제 이름은 ${el.name}이고 나이는 ${el.age}입니다`;
+  return message;
+});
+console.log(result3);
 
 // 5. 각 학생들의 수학, 영어의 점수를 모두 더해주고 평균을 구해주세요 (수학 + 영어) / 학생 수
 
