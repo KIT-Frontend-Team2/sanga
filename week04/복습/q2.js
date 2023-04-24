@@ -57,10 +57,11 @@ console.log(users);
 
 // 문제2
 
-const del_1 = users.find((item) => item.name === "배상아");
-const del_2 = users.indexOf(del_1);
-users.splice(del_2, 1);
-console.log(users);
+const del = [...users];
+const del_1 = del.find((item) => item.name === "배상아");
+const del_2 = del.indexOf(del_1);
+del.splice(del_2, 1);
+console.log(del);
 
 // 문제3
 users.map((el) => {
