@@ -86,6 +86,7 @@ function Calculate(){
 }, [item]);
   return <div>{value}</div>
 } 
+// item이 변경될 때마다 함수가 렌더링됨
 // 컴포넌트가 다시 렌더링되더라도 calculate가 초기화되는걸 막을 수 있음 
 
 [useCallback 구조]
