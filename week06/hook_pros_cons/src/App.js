@@ -1,10 +1,11 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
+import UseRef from "./hooks/useRef";
+import UseMemo from "./hooks/useMemo";
 
 function App() {
   const [sanga, setSanga] = useState("Hooks 함수 연습");
-  const [age, setAge] = useState(27);
   console.log("렌더링이 되보겠습니다.");
 
   return (
@@ -18,19 +19,8 @@ function App() {
       >
         버튼
       </button>
-      <div style={{ margin: "100px auto", width: 300 }}>
-        <div>장동민의 나이 : {age}</div>
-        <div>
-          <button
-            onClick={() => {
-              setAge(age + 1);
-              console.log("렌더링이 되었습니다.");
-            }}
-          >
-            벌써 일년
-          </button>
-        </div>
-      </div>
+      <UseRef />
+      <UseMemo />
     </div>
   );
 }
