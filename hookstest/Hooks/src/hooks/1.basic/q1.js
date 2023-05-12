@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 function Q1() {
@@ -24,6 +25,22 @@ function Q1() {
 
   */
 
+  const [firstMessage, setFirstMessage] = useState("");
+  const [secondMessage, setSecondMessage] = useState(false);
+
+  const firstProblem = (el) => {
+    const firstProblemValue = el.target.value;
+    const firstProblemPlaceholder = el.target.placeholder;
+
+    if (firstProblemValue === firstProblemPlaceholder) {
+      setFirstMessage(true);
+      console.log("올바르게 입력하셨습니다");
+    } else {
+      setFirstMessage(false);
+      console.log("올바르게 글을 작성해주세요");
+    }
+  };
+
   return (
     <>
       <h1>문제1</h1>
@@ -33,14 +50,30 @@ function Q1() {
           type="text"
           placeholder={"김성용"}
           style={{ textAlign: "center" }}
+          onChange={firstProblem}
         />
-        <S.Message> 올바르게 입력하셨습니다 </S.Message>
+        <S.Message>
+          {firstMessage === true
+            ? `올바르게 입력하셨습니다`
+            : `올바르게 글을 작성해주세요`}
+        </S.Message>
       </div>
 
       <div>
         <h2>문제1-2. </h2>
-        <button>보이기</button>
-        <p> 이 문구는 보이기 상태일 때만 볼 수 있습니다 </p>
+        <button
+          onClick={() => {
+            setSecondMessage(!secondMessage);
+          }}
+        >
+          {secondMessage ? `숨기기` : `보이기`}
+        </button>
+        <p>
+          {secondMessage
+            ? ``
+            : `이 문구는 보이기 상태일 때만 볼 수
+          있습니다`}
+        </p>
       </div>
     </>
   );
