@@ -25,7 +25,7 @@ function Q1() {
 
   */
 
-  const [firstMessage, setFirstMessage] = useState("");
+  const [firstMessage, setFirstMessage] = useState(false);
   const [secondMessage, setSecondMessage] = useState(false);
 
   const firstProblem = (el) => {
@@ -33,6 +33,7 @@ function Q1() {
     const firstProblemPlaceholder = el.target.placeholder;
 
     if (firstProblemValue === firstProblemPlaceholder) {
+      console.log(firstMessage, "안녕");
       setFirstMessage(true);
       console.log("올바르게 입력하셨습니다");
     } else {
@@ -80,7 +81,9 @@ function Q1() {
 }
 export default Q1;
 
-const Message = styled.p``;
+const Message = styled.p`
+  color: ${(props) => (props.firstMessage === false ? "#008000" : "#FF0000")};
+`;
 
 const S = {
   Message,
