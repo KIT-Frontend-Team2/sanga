@@ -35,7 +35,7 @@ function Q1() {
     if (firstProblemValue === firstProblemPlaceholder) {
       console.log(firstMessage, "안녕");
       setFirstMessage(true);
-      console.log("올바르게 입력하셨습니다");
+      console.log("올바르게 입력하셨습니다^^");
     } else {
       setFirstMessage(false);
       console.log("올바르게 글을 작성해주세요.");
