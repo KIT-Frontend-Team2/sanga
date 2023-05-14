@@ -53,7 +53,7 @@ function Q1() {
           style={{ textAlign: "center" }}
           onChange={firstProblem}
         />
-        <S.Message>
+        <S.Message props={firstMessage}>
           {firstMessage === true
             ? `올바르게 입력하셨습니다`
             : `올바르게 글을 작성해주세요`}
@@ -82,9 +82,22 @@ function Q1() {
 export default Q1;
 
 const Message = styled.p`
-  color: ${(props) => (props.firstMessage === false ? "#008000" : "#FF0000")};
+  color: ${({ props }) => {
+    console.log(props);
+    return props ? "#008000" : "#FF0000";
+  }};
 `;
 
 const S = {
   Message,
 };
+
+/*
+본인 레포지토리에 올릴거 전부 올리기 (컴퓨터로)
+클론받기 
+gitignore 파일 올리기 
+push 하기 
+풀 푸쉬 커밋 잊지말기 
+
+스타일 컴포넌트 공부하기 
+*/
