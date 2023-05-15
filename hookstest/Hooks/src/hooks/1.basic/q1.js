@@ -91,13 +91,3 @@ const Message = styled.p`
 const S = {
   Message,
 };
-
-/*
-본인 레포지토리에 올릴거 전부 올리기 (컴퓨터로)
-클론받기 
-gitignore 파일 올리기 
-push 하기 
-풀 푸쉬 커밋 잊지말기 
-
-스타일 컴포넌트 공부하기 
-*/
