@@ -44,7 +44,7 @@ function Q2() {
       <div>
         <h2>문제 2-2</h2>
         <p> 이 문구는 아래 버튼을 누르면 색상이 바뀝니다</p>
-        <button>변경</button>
+        <button onClick={}>변경</button>
       </div>
     </>
   );
