@@ -25,7 +25,7 @@ function Q2() {
   console.log(list);
 
   const onChange = () => {
-    changeColor.current.style.color = "orange";
+    changeColor.current.style.color = "pink";
   };
 
   return (
