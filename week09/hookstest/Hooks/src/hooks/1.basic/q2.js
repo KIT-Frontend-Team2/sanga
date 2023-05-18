@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 function Q2() {
   const arr = useRef([]);
   const inputRef = useRef();
+  const changeColor = useRef();
   const [list, setList] = useState([""]);
   const [forceRender, setForceRender] = useState(false);
 
@@ -22,6 +23,10 @@ function Q2() {
     );
   };
   console.log(list);
+
+  const onChange = () => {
+    changeColor.current.style.color = "orange";
+  };
 
   return (
     <>
@@ -43,8 +48,8 @@ function Q2() {
       </div>
       <div>
         <h2>문제 2-2</h2>
-        <p> 이 문구는 아래 버튼을 누르면 색상이 바뀝니다</p>
-        <button onClick={}>변경</button>
+        <p ref={changeColor}> 이 문구는 아래 버튼을 누르면 색상이 바뀝니다</p>
+        <button onClick={onChange}>변경</button>
       </div>
     </>
   );
