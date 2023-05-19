@@ -1,3 +1,4 @@
+import { useState } from "react";
 import PlayListMock from "../../__mock__/playList.json";
 
 function State1() {
@@ -14,26 +15,53 @@ function State1() {
   console.log(PlayListMock.playlist);
   /* 데이터 콘솔에 찍어두었으니 확인해볼 것 */
 
+  // PlayListMock 데이터 가져오기
+  const [playList, setPlayList] = useState(PlayListMock.playlist);
+
+  const [title, setTitle] = useState("");
+  const [singer, setSinger] = useState("");
+
+  const Add = () => {
+    const newAdd = { title, singer };
+    setPlayList((playList) => [newAdd, ...playList]);
+
+    console.log(PlayListMock.playlist);
+  };
+
   return (
     <>
       <h1>문제1</h1>
       <ul>
         {/* list */}
         {/* 예시 데이터입니다 */}
-        <li>
-          <h3>Summer</h3>
-          <p>Joe Hisaishi</p>
-        </li>
+        {playList.map((item) => (
+          <li>
+            <h3>{item.title}</h3>
+            <p>{item.signer}</p>
+          </li>
+        ))}
       </ul>
       <div>
         <p>
-          곡명 : <input />
+          곡명 :
+          <input
+            onChange={(event) => {
+              setTitle(event.target.value);
+            }}
+            value={title}
+          />
         </p>
         <p>
-          가수/작곡 : <input />
+          가수/작곡 :
+          <input
+            onChange={(event) => {
+              setSinger(event.target.value);
+            }}
+            value={singer}
+          />
         </p>
         <p>
-          <button>추가</button>
+          <button onClick={Add}>추가</button>
         </p>
       </div>
     </>

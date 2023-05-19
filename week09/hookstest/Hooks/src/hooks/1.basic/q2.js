@@ -4,7 +4,7 @@ function Q2() {
   const arr = useRef([]);
   const inputRef = useRef();
   const changeColor = useRef();
-  const [list, setList] = useState([""]);
+  const [list, setList] = useState("");
   const [forceRender, setForceRender] = useState(false);
 
   const onAddList = () => {
@@ -12,6 +12,7 @@ function Q2() {
     setForceRender((prev) => !prev);
     console.log(arr.current);
   };
+  console.log(arr.current);
 
   const onSubmit = () => {
     setList(
