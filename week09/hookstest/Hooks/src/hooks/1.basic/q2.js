@@ -44,7 +44,7 @@ function Q2() {
           <button onClick={onSubmit}>제출</button>
         </p>
 
-        <p>제출된 목록이 없습니다</p>
+        {forceRender ? "" : <p>제출된 목록이 없습니다</p>}
         <ul>{list}</ul>
       </div>
       <div>
