@@ -25,6 +25,15 @@ const ReducerQ1Page = () => {
     { id: 5, name: "양파", price: 500 },
   ]);
 
+  const onSubmit = (e) => {
+    const ingredients_Add = {
+      id: Math.floor(Math.random() * 100000),
+      name: e.target.name.value,
+      price: e.target.price.value,
+    };
+    e.target.name.value = "";
+    e.target.price.value = "";
+  };
   return (
     <>
       <h2>문제 1</h2>
