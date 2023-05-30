@@ -78,7 +78,7 @@ function State2() {
         nickname: value.name,
       },
       content: value.content,
-      myComment: false,
+      myComment: true,
     };
 
     setPost({
@@ -95,7 +95,7 @@ function State2() {
   };
 
   // name의 change받아오는 컴포넌트 생성하기
-  // 콘솔에는 데이터가 잘 받아오는데 화면에 새로운 데이터가 출력이 안됨ㅠㅠ
+  // 콘솔에는 새로운 데이터가 잘 받아오는데 화면에 원래 데이터만 출력되고 새로운 데이터가 출력이 안됨ㅠㅠ
   const onChangeName = (e) => {
     setValue({
       name: e.target.value,
@@ -144,7 +144,7 @@ function State2() {
             onChange={onChangeContent}
           />
 
-          <button>댓글 작성</button>
+          <button type="submit">댓글 작성</button>
         </form>
       </div>
       <S.CommentList>
@@ -153,9 +153,10 @@ function State2() {
         {post.Comments.map((comment, index) => (
           <Comment
             key={index}
+            // comment.js 파일에 props로 user와 content보내기
             user={comment.User.nickname}
             content={comment.content}
-            myComment={comment.myComment}
+            // myComment={comment.myComment}
           />
         ))}
       </S.CommentList>
