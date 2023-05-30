@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Comment from "../../components/2.state/comment";
 
 function State2() {
@@ -63,7 +63,23 @@ function State2() {
     ],
   });
 
-  const onComment = () => {};
+  const [writer, setWriter] = useState("");
+  const [text, setText] = useState("");
+
+  // 댓글 작성 버튼 누르면 실행되는 로직
+  // 사용자가 입력한 작성자, 댓글 내용이 화면에 보여지게하기
+  const onCommentWrite = (e) => {
+    e.preventDefault();
+    const newComment = {
+      writer: e.target.writer.value,
+      text: e.target.text.value,
+    };
+    setPost((comment) => [...comment, newComment]);
+    console.log(writer, text);
+    setWriter("");
+    setText("");
+  };
+
   return (
     <S.Wrapper>
       <h1>문제2</h1>
@@ -71,6 +87,7 @@ function State2() {
         <S.PostTitle>제목: {post.title}</S.PostTitle>
         <S.PostContent>내용: {post.content}</S.PostContent>
       </S.PostBox>
+
       <S.PostInfo>
         <p>
           작성자: <span>{post.User.nickname}</span>
@@ -86,18 +103,34 @@ function State2() {
         <p>
           댓글 수: <span>{post.Comments.length}</span>
         </p>
-        <input placeholder="작성자" />
-        <input placeholder="댓글 내용" onChange={onComment} />
+        <form
+          onSubmit={(e) => {
+            onCommentWrite(e);
+          }}
+        >
+          <input placeholder="작성자" name="writer" />
+          <input placeholder="댓글 내용" name="text" />
+        </form>
+
         <button>댓글 작성</button>
       </div>
       <S.CommentList>
-        {/* list */}
-        {/* 예시 데이터 */}
-        <Comment />
+        {/* Comments 데이터 화면에 출력하기
+         강사님이 만드신 Comments을 화면에 출력해야되는데 댓글이 왜 뜨지??
+         */}
+        {post.Comments.map((comment, index) => (
+          <Comment
+            key={index}
+            user={comment.User.nickname}
+            content={comment.content}
+            myComment={comment.myComment}
+          />
+        ))}
       </S.CommentList>
     </S.Wrapper>
   );
 }
+
 export default State2;
 
 const Wrapper = styled.div`
