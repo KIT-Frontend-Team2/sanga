@@ -1,13 +1,17 @@
+import { useState } from "react";
 import styled from "styled-components";
 
-function Comment() {
+function Comment({ user, content }) {
+  const [modal, setModal] = useState(false);
+
   return (
     <S.CommentItem>
       <p>
-        작성자: <span>예시 이름</span>
+        작성자: <span>{user}</span>
       </p>
+
       <p>
-        댓글 내용: <span>예시 내용</span>
+        댓글 내용: <span>{content}</span>
       </p>
     </S.CommentItem>
   );

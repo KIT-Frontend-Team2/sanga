@@ -61,11 +61,8 @@ function State1() {
         ))}
       </ul>
       <div>
-        <form
-          onSubmit={(e) => {
-            onUpdate(e);
-          }}
-        >
+        {/* form태그안에 굳이 콜백함수로 안넣어줘도 됨 실행만 시켜주면 된다  */}
+        <form onSubmit={onUpdate}>
           <p>
             곡명 :
             <input name="title" />

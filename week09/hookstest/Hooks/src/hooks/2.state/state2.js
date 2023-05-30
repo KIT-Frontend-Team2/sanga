@@ -63,23 +63,52 @@ function State2() {
     ],
   });
 
-  const [writer, setWriter] = useState("");
-  const [text, setText] = useState("");
+  // 사용자가 입력한 값들 저장
+  const [value, setValue] = useState({
+    name: "",
+    content: "",
+  });
 
   // 댓글 작성 버튼 누르면 실행되는 로직
   // 사용자가 입력한 작성자, 댓글 내용이 화면에 보여지게하기
   const onCommentWrite = (e) => {
     e.preventDefault();
     const newComment = {
-      writer: e.target.writer.value,
-      text: e.target.text.value,
+      User: {
+        nickname: value.name,
+      },
+      content: value.content,
+      myComment: false,
     };
-    setPost((comment) => [...comment, newComment]);
-    console.log(writer, text);
-    setWriter("");
-    setText("");
+
+    setPost({
+      ...post,
+      Comment: [...post.Comments, newComment],
+    });
+
+    console.log(newComment);
+
+    setValue({
+      name: "",
+      content: "",
+    });
   };
 
+  // name의 change받아오는 컴포넌트 생성하기
+  // 콘솔에는 데이터가 잘 받아오는데 화면에 새로운 데이터가 출력이 안됨ㅠㅠ
+  const onChangeName = (e) => {
+    setValue({
+      name: e.target.value,
+      content: value.content,
+    });
+  };
+
+  const onChangeContent = (e) => {
+    setValue({
+      name: value.name,
+      content: e.target.value,
+    });
+  };
   return (
     <S.Wrapper>
       <h1>문제2</h1>
@@ -103,20 +132,23 @@ function State2() {
         <p>
           댓글 수: <span>{post.Comments.length}</span>
         </p>
-        <form
-          onSubmit={(e) => {
-            onCommentWrite(e);
-          }}
-        >
-          <input placeholder="작성자" name="writer" />
-          <input placeholder="댓글 내용" name="text" />
-        </form>
+        <form onSubmit={onCommentWrite}>
+          <input
+            placeholder="작성자"
+            value={value.name}
+            onChange={onChangeName}
+          />
+          <input
+            placeholder="댓글 내용"
+            value={value.content}
+            onChange={onChangeContent}
+          />
 
-        <button>댓글 작성</button>
+          <button>댓글 작성</button>
+        </form>
       </div>
       <S.CommentList>
         {/* Comments 데이터 화면에 출력하기
-         강사님이 만드신 Comments을 화면에 출력해야되는데 댓글이 왜 뜨지??
          */}
         {post.Comments.map((comment, index) => (
           <Comment
