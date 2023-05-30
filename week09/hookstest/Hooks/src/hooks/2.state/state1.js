@@ -17,13 +17,25 @@ function State1() {
   // PlayListMock 데이터 가져오기
   const [playList, setPlayList] = useState(PlayListMock.playlist);
 
+  // 곡명
   const [title, setTitle] = useState("");
+
+  // 가수/작곡
   const [singer, setSinger] = useState("");
 
-  const Add = () => {
+  const onUpdate = () => {
     const newAdd = { title, singer };
     setPlayList((playList) => [...playList, newAdd]);
-    console.log(PlayListMock.playlist);
+    console.log(singer);
+
+    // 추가를 했으면 다시 빈문자열로 초기화하기
+    setTitle("");
+    setSinger("");
+  };
+
+  const onDelete = (index) => {
+    const onDeleteAdd = playList.filter((playList, el) => el !== index);
+    setPlayList(onDeleteAdd);
   };
 
   return (
@@ -38,6 +50,7 @@ function State1() {
           <li key={index}>
             <h3>{item.title}</h3>
             <p>{item.signer}</p>
+            <button onClick={() => onDelete(index)}>삭제</button>
           </li>
         ))}
       </ul>
@@ -61,7 +74,7 @@ function State1() {
           />
         </p>
         <p>
-          <button onClick={Add}>추가</button>
+          <button onClick={onUpdate}>추가</button>
         </p>
       </div>
     </>

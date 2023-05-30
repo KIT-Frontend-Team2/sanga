@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import NavigateButton from "../../../../components/NavigateButton";
 import Q1Form from "../atom/Form";
 import ReducerQ1List from "../atom/List";
@@ -17,23 +17,26 @@ const ReducerQ1Page = () => {
           src/store/1_reducer.js에 구현해보세요
     */
 
-  const [ingredients, setIngredients] = useState([
+  // const [ingredients, setIngredients] = useState([
+  //   { id: 1, name: "피자 도우", price: 1000 },
+  //   { id: 2, name: "토마토 소스", price: 500 },
+  //   { id: 3, name: "치즈", price: 1000 },
+  //   { id: 4, name: "피망", price: 500 },
+  //   { id: 5, name: "양파", price: 500 },
+  // ]);
+
+  const initialState = [
     { id: 1, name: "피자 도우", price: 1000 },
     { id: 2, name: "토마토 소스", price: 500 },
     { id: 3, name: "치즈", price: 1000 },
     { id: 4, name: "피망", price: 500 },
     { id: 5, name: "양파", price: 500 },
-  ]);
+  ];
 
-  const onSubmit = (e) => {
-    const ingredients_Add = {
-      id: Math.floor(Math.random() * 100000),
-      name: e.target.name.value,
-      price: e.target.price.value,
-    };
-    e.target.name.value = "";
-    e.target.price.value = "";
-  };
+  const reducer = (state, action) = > {
+    
+  }
+  const [ingredients, dispatch] = useReducer(reducer, initialState);
   return (
     <>
       <h2>문제 1</h2>
