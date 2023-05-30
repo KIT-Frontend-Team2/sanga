@@ -63,6 +63,7 @@ function State2() {
     ],
   });
 
+  const onComment = () => {};
   return (
     <S.Wrapper>
       <h1>문제2</h1>
@@ -86,7 +87,7 @@ function State2() {
           댓글 수: <span>{post.Comments.length}</span>
         </p>
         <input placeholder="작성자" />
-        <input placeholder="댓글 내용" />
+        <input placeholder="댓글 내용" onChange={onComment} />
         <button>댓글 작성</button>
       </div>
       <S.CommentList>

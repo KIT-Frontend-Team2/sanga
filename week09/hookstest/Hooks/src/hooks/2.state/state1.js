@@ -23,11 +23,16 @@ function State1() {
   // 가수/작곡
   const [singer, setSinger] = useState("");
 
-  const onUpdate = () => {
-    const newAdd = { title, singer };
+  const onUpdate = (e) => {
+    e.preventDefault();
+    const newAdd = {
+      title: e.target.title.value,
+      singer: e.target.singer.value,
+    };
     setPlayList((playList) => [...playList, newAdd]);
-    console.log(singer);
-
+    console.log(title, singer); // 곡명이랑 가수/작곡 다 잘 넘어왔는데 화면에는 곡명만 찍힘 이유가 뭘까?
+    // 이유 찾았음 -> PlayListMock 에 singer 오타
+    console.log(playList);
     // 추가를 했으면 다시 빈문자열로 초기화하기
     setTitle("");
     setSinger("");
@@ -49,33 +54,29 @@ function State1() {
         {playList.map((item, index) => (
           <li key={index}>
             <h3>{item.title}</h3>
-            <p>{item.signer}</p>
+            <p>{item.singer}</p>
             <button onClick={() => onDelete(index)}>삭제</button>
           </li>
         ))}
       </ul>
       <div>
-        <p>
-          곡명 :
-          <input
-            onChange={(event) => {
-              setTitle(event.target.value);
-            }}
-            value={title}
-          />
-        </p>
-        <p>
-          가수/작곡 :
-          <input
-            onChange={(event) => {
-              setSinger(event.target.value);
-            }}
-            value={singer}
-          />
-        </p>
-        <p>
-          <button onClick={onUpdate}>추가</button>
-        </p>
+        <form
+          onSubmit={(e) => {
+            onUpdate(e);
+          }}
+        >
+          <p>
+            곡명 :
+            <input name="title" />
+          </p>
+          <p>
+            가수/작곡 :
+            <input name="singer" />
+          </p>
+          <p>
+            <button>추가</button>
+          </p>
+        </form>
       </div>
     </>
   );
