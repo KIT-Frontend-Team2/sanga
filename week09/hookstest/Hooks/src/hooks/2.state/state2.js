@@ -81,9 +81,10 @@ function State2() {
       myComment: true,
     };
 
+    // Comment -> Comments 로 수정했더니 화면에 내가 입력한 댓글 보여짐
     setPost({
       ...post,
-      Comment: [...post.Comments, newComment],
+      Comments: [...post.Comments, newComment],
     });
 
     console.log(newComment);
