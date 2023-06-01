@@ -82,6 +82,8 @@ function State2() {
     };
 
     // Comment -> Comments 로 수정했더니 화면에 내가 입력한 댓글 보여짐
+
+    // 사용자가 input에 값을 입력하면 화면에 보여짐
     setPost({
       ...post,
       Comments: [...post.Comments, newComment],
@@ -93,6 +95,13 @@ function State2() {
       name: "",
       content: "",
     });
+
+    const onRemove = (nickname) => {
+      setPost(
+        post.filter((newComment) => newComment.User.nickname !== nickname)
+      );
+    };
+    console.log(onRemove);
   };
 
   // name의 change받아오는 컴포넌트 생성하기
@@ -151,13 +160,14 @@ function State2() {
       <S.CommentList>
         {/* Comments 데이터 화면에 출력하기
          */}
-        {post.Comments.map((comment, index) => (
+        {post.Comments.map((comment, index, onRemove) => (
           <Comment
             key={index}
             // comment.js 파일에 props로 user와 content보내기
             user={comment.User.nickname}
             content={comment.content}
             // myComment={comment.myComment}
+            onRemove={onRemove}
           />
         ))}
       </S.CommentList>
