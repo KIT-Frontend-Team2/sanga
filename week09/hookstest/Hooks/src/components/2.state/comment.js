@@ -1,14 +1,14 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-function Comment({ user, content, onRemove }) {
+function Comment({ nickName, content, onRemove }) {
   return (
     <S.CommentItem>
       <button>수정</button>
-      <button onClick={onRemove}>삭제</button>
+      <button onClick={() => onRemove(nickName)}>삭제</button>
 
       <p>
-        작성자: <span>{user}</span>
+        작성자: <span>{nickName}</span>
       </p>
 
       <p>

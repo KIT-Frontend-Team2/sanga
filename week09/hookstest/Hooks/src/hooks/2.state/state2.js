@@ -95,14 +95,19 @@ function State2() {
       name: "",
       content: "",
     });
-
-    const onRemove = (nickname) => {
-      setPost(
-        post.filter((newComment) => newComment.User.nickname !== nickname)
-      );
-    };
-    console.log(onRemove);
   };
+
+  // 피드백 : 삭제가 안된 이유는 데이터를 받아오는 형태를 객체로 받아와야하는데, 배열로 받아오고 있어서 오류가 났다.
+  const onRemove = (user) => {
+    setPost({
+      ...post,
+      Comments: post.Comments.filter(
+        (newComment) => newComment.User.nickname !== user
+      ),
+    });
+  };
+
+  console.log({ post });
 
   // name의 change받아오는 컴포넌트 생성하기
   // 콘솔에는 새로운 데이터가 잘 받아오는데 화면에 원래 데이터만 출력되고 새로운 데이터가 출력이 안됨ㅠㅠ
@@ -119,6 +124,7 @@ function State2() {
       content: e.target.value,
     });
   };
+
   return (
     <S.Wrapper>
       <h1>문제2</h1>
@@ -160,11 +166,11 @@ function State2() {
       <S.CommentList>
         {/* Comments 데이터 화면에 출력하기
          */}
-        {post.Comments.map((comment, index, onRemove) => (
+        {post.Comments.map((comment, index) => (
           <Comment
             key={index}
             // comment.js 파일에 props로 user와 content보내기
-            user={comment.User.nickname}
+            nickName={comment.User.nickname}
             content={comment.content}
             // myComment={comment.myComment}
             onRemove={onRemove}
